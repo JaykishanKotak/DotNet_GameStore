@@ -20,7 +20,7 @@ Content-Type: application/json
 {
     "name" : "Grand Theft Auto VI",
      "genre" : "Action - Adventure",
-     "price" : 129.99,
+     "price" : 99.99,
      "releaseDate" : "2026-05-05"
 }
 

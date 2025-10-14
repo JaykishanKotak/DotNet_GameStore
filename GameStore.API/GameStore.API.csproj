@@ -7,14 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="NewFolder\**" />
-    <Content Remove="NewFolder\**" />
-    <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="NewFolder\**" />
+    <Compile Remove="Dtos\NewFolder\**" />
+    <Content Remove="Dtos\NewFolder\**" />
+    <EmbeddedResource Remove="Dtos\NewFolder\**" />
+    <None Remove="Dtos\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\NewFolder\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MinimalApis.Extensions" Version="0.11.0" />
   </ItemGroup>
 
 </Project>

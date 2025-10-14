@@ -1,5 +1,5 @@
 // must match namespace of the folder with file system
-namespace GameStore.API.Dtos;
+namespace GameStore.Api.Dtos;
 
 // records are immutable by default
 // properties in records are init-only by default
