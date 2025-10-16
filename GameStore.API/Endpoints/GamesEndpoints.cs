@@ -1,5 +1,8 @@
 
+using GameStore.Api.Data;
 using GameStore.Api.Dtos;
+using GameStore.Api.Entities;
+using GameStore.Api.Mapping;
 
 namespace GameStore.Api.Endpoints;
 
@@ -39,7 +42,8 @@ public static class GamesEndpoints
 
         }).WithName(GetGameEndpointName);
 
-        group.MapPost("/", (CreateGameDto newGame) => {
+        // POST /games
+        group.MapPost("/", (CreateGameDto newGame, GameStoreContext dbContext) => {
 
             // Validations
             //if (string.IsNullOrEmpty(newGame.Name))
@@ -47,19 +51,44 @@ public static class GamesEndpoints
             //    return Results.BadRequest("Name is required !");
             //}
 
+            // Using mappings
+            Game game = newGame.ToEntity();
+            game.Genre = dbContext.Genres.Find(newGame.GenreId);
 
-            GameDto game = new(
-                games.Count + 1,
-                newGame.Name,
-                newGame.Genre,
-                newGame.Price,
-                newGame.ReleaseDate
-            );
+            //Game game = new()
+            //{
+            //    Name = newGame.Name,
+            //    Genre = dbContext.Genres.Find(newGame.GenreId),
+            //    GenreId = newGame.GenreId,
+            //    Price = newGame.Price,
+            //    ReleaseDate = newGame.ReleaseDate,
+            //};
 
-            games.Add(game);
+            //GameDto game = new(
+            //    games.Count + 1,
+            //    newGame.Name,
+            //    newGame.Genre,
+            //    newGame.Price,
+            //    newGame.ReleaseDate
+            //);
+
+            //games.Add(game);
+            dbContext.Games.Add(game);
+
+            // Transform statement and execute operation in db
+            dbContext.SaveChanges();
+
+            // DTO out of game entity to return back details to client
+            //GameDto gameDto = new(
+            //    game.Id,
+            //    game.Name,
+            //    game.Genre!.Name,
+            //    game.Price,
+            //    game.ReleaseDate
+            //);
 
             // Result class contains multiple pre build resources
-            return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
+            return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game.toDto());
         }).WithParameterValidation();
 
         // PUT /games/id

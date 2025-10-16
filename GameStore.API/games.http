@@ -8,10 +8,11 @@ POST http://localhost:5054/games
  Content-Type: application/json
 
  {
-     "name" : "Grand Theft Auto V",
-     "genre" : "Action - Adventure",
-     "price" : 29.99,
-     "releaseDate" : "2015-05-05"
+     "name" : "Red Dead Redemption 2",
+     // "genre" : "Action - Adventure",
+     "genreId" : 1,
+     "price" : 49.99,
+     "releaseDate" : "2018-10-27"
  }
 
 PUT http://localhost:5054/games/11
