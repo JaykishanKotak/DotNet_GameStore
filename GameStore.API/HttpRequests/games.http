@@ -1,8 +1,6 @@
-GET http://localhost:5054
-
 GET http://localhost:5054/games
 
-GET http://localhost:5054/games/1
+GET http://localhost:5054/games/8
 
 POST http://localhost:5054/games
  Content-Type: application/json
@@ -25,4 +23,4 @@ Content-Type: application/json
      "releaseDate" : "2015-05-08"
 }
 
-DELETE http://localhost:5054/games/6
+DELETE http://localhost:5054/games/8

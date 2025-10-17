@@ -16,13 +16,16 @@ var app = builder.Build();
 
 // Call Games releted logic and endpoints
 app.MapGamesEndpoints();
+app.MapGenresEndpoints();
 
 // This line sets up a simple route for the home page ('/').
 // When someone visits the root URL, it will respond with "Hello World!".
 app.MapGet("/", () => "Hello World!");
 
 // Migration Run on start of app
-app.MigrateDb();
+// app.MigrateDb();
+
+await app.MigrateDbAsync();
 
 // This line actually starts the web server so it can handle requests.
 // The app will keep running until you stop it.
